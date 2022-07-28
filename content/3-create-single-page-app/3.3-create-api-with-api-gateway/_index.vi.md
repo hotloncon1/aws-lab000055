@@ -39,7 +39,7 @@ aws cloudformation package --template template.yml --s3-bucket devax-06-s3bucket
 * Click **Create Resource**
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-004.png?featherlight=false&width=90pc)
 5. Trong trang **New Child Resource**
-* Tại mục **Resource Path**, điền ```trips```
+* Tại mục **Resource Name**, điền ```trips```
 * Đánh dấu vào **Enable API Gateway CORS**
 * Click **Create Resource**
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-005.png?featherlight=false&width=90pc)

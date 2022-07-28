@@ -59,9 +59,9 @@ pre = "<b>2.3. </b>"
 ![Connect to the Windows Instance](/images/2-prepare/2.3-connectvirtualmachine/connectvirtualmachine-014.png?featherlight=false&width=90pc)
 7. Chạy lệnh dưới đây
 ```
-aws configure set profile.aws-lab-env.region <YOUR_REGION>
-aws configure set profile.aws-lab-env.aws_access_key_id <YOUR_ACCESS_KEY_ID>
-aws configure set profile.aws-lab-env.aws_secret_access_key <YOUR_SECRET_ACCESS_KEY>
+aws configure set profile.devaxacademy.region <YOUR_REGION>
+aws configure set profile.devaxacademy.aws_access_key_id <YOUR_ACCESS_KEY_ID>
+aws configure set profile.devaxacademy.aws_secret_access_key <YOUR_SECRET_ACCESS_KEY>
 git config --global user.email <YOUR_EMAIL>
 git config --global user.name awsstudent
 ```

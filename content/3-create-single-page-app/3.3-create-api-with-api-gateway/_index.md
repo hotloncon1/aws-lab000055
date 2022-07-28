@@ -23,7 +23,7 @@ pre = "<b>3.3. </b>"
 * Click **Create Resource**
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-004.png?featherlight=false&width=90pc)
 5. In the **New Child Resource** page
-* In the **Resource Path** section, type ```trips```
+* In the **Resource Name** section, type ```trips```
 * Check **Enable API Gateway CORS**
 * Click **Create Resource**
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-005.png?featherlight=false&width=90pc)
