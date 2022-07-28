@@ -294,6 +294,7 @@ mvn package shade:shade
 * Replace **\<DatabaseSubnet1\>** by the **DatabaseSubnet1** value we saved in step 69
 * Replace **\<DatabaseSubnet2\>** by the **DatabaseSubnet2** value we saved in step 69
 * Replace **\<RDSEndpoint\>** by the **RDSEndpoint** value we saved in step 69
+* Save
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-069.png?featherlight=false&width=90pc)
 72. In the **Command Prompt**, execute the following command to package the Lambda function
 ```

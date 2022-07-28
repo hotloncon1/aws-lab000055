@@ -6,16 +6,6 @@ chapter = false
 pre = "<b>3.5. </b>"
 +++
 #### Thiết lập trang SPA
-iDevelop - Flight Specials API
-iDevelop - Hotel Specials API
-iDevelop - Trip Search API
-```
-set AWS_PROFILE=devaxacademy
-aws s3 sync . s3://devax-06-s3bucketwebsite18ddbcd4-7ud5y2jvep25 --acl public-read
-```
-```
-java -jar target\TripSearch-1.0-SNAPSHOT.jar
-```
 
 Bây giờ chúng ta đã thiết lập ba API, chúng ta đã sẵn sàng gọi chúng từ trang web. Trước tiên, chúng ta cần thiết lập ứng dụng web đơn trang (SPA) và host nó trên Amazon S3.
 

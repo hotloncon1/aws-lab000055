@@ -236,11 +236,12 @@ mvn install
 This will compile and install the SDK in your local Maven repository, overwriting the previous version. 
 
 #### Test the newly generated SDK with the Java client app
-28. Execute the following command to run application
+28. In the **Command Prompt**, navigate to the directory of the project we extracted in step 10
+* Execute the following command to run application
 ```
 java -jar target/TripSearch-sdkClient-1.0-SNAPSHOT.jar
 ```
-* ince you have set the **/tripsfromcity/{GET}** endpoint to require an **API Key**, but have not actually set an API in the client application, you will see a **Forbidden** error
+* Since you have set the **/tripsfromcity/{GET}** endpoint to require an **API Key**, but have not actually set an API in the client application, you will see a **Forbidden** error
 ![Build A Client To Consume The API](/images/3-create-single-page-app/3.6-build-api-consumer/build-api-consumer-027.png?featherlight=false&width=60pc)
 
 #### Set the API Key in the client code and re-run the API consumer application with throttling enabled

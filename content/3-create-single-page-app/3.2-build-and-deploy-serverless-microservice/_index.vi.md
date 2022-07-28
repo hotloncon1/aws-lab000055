@@ -7,20 +7,6 @@ pre = "<b>3.2. </b>"
 +++
 #### Xây dựng và triển khai Serverless Microservice thủ công
 
-
-```aws s3 cp target/tripsearch-1.0.0.jar s3:// --region us-east-1```
-aws lambda create-function --function-name idevelopTripSearchFromCity --runtime java8 --role arn:aws:iam::649966601103:role/LambdaRole --handler devlounge.lambda.FindTripsFromCityHandler --code S3Bucket=devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t,S3Key=tripsearch-1.0.0.jar --timeout 15 --description "TravelBuddy TripSearch microservice - FindTripsFromCity" --memory-size 1024 --region us-east-1
-
-aws lambda create-function --function-name idevelopFindTripsToCity --runtime java8 --role arn:aws:iam::649966601103:role/LambdaRole --handler devlounge.lambda.FindTripsToCityHandler --code S3Bucket=devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t,S3Key=tripsearch-1.0.0.jar --timeout 15 --description "TravelBuddy TripSearch microservice - FindTripsToCity" --memory-size 1024 --region us-east-1
-
-```
-set AWS_PROFILE=devaxacademy
-mvn package shade:shade
-```
-
-aws cloudformation package --template template.yml --s3-bucket devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t --output-template template-export.yml
-aws cloudformation package --template template.yml --s3-bucket devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t --output-template template-export.yml
-
 Trong bài tập này, bạn sẽ tự tạo và cấu hình một serverless microservice. Trong quá trình làm bài thực hành, bạn sẽ sử dụng các kỹ thuật khác nhau để xây dựng và triển khai, khi đó bạn có thể so sánh và đối chiếu hiệu quả của từng cách tiếp cận và phương pháp tự động hóa làm cho việc phát triển ứng dụng trở nên nhanh hơn và hiệu quả hơn cho các developer.
 
 

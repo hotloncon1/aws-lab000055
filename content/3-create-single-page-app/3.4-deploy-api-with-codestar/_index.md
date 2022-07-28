@@ -7,44 +7,6 @@ pre = "<b>3.4. </b>"
 +++
 #### Create a CI/CD pipeline with AWS CodeStar
 
-
-```
-cd C:\Users\Administrator\git\FlightSpecialsAPI
-git checkout -b "new-implementation"
-cd C:\Users\Administrator\Downloads\FlightSpecials
-copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
-```
-git checkout "new-implementation"
-
-```
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot</artifactId>
-			<version>2.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>2.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.json</groupId>
-    		<artifactId>json</artifactId>
-    		<version>20180130</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws.serverless</groupId>
-			<artifactId>aws-serverless-java-container-core</artifactId>
-			<version>1.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.2.0</version>
-		</dependency>
-```
-
-
 1. Go to [**AWS CodeStar Console**](https://console.aws.amazon.com/codesuite/codestar/home).
 * Click **Projects**
 * Click **Create project**
@@ -120,8 +82,39 @@ copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
 * Click **Maven**
 * Click **Update Project...**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-018.png?featherlight=false&width=90pc)
+20. In the Eclipse IDE, open the **pom.xml** file
+* After the line 113, add the following content
+```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<version>2.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>2.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.json</groupId>
+    		<artifactId>json</artifactId>
+    		<version>20180130</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws.serverless</groupId>
+			<artifactId>aws-serverless-java-container-core</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+```
+* Save
+
 #### Give CloudFormation permission to create an IAM role
-20. Go to [**AWS IAM Console**](https://console.aws.amazon.com/iamv2/).
+21. Go to [**AWS IAM Console**](https://console.aws.amazon.com/iamv2/).
 * Click **Roles**.
 * Type ```CodeStarWorker-flightspecialsa-CloudFormation``` to the search bar and press **Enter**
 * Click **CodeStarWorker-flightspecialsa-CloudFormation**. 
@@ -129,15 +122,15 @@ copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
 If you can’t find the role, it may be too early - CodeStar may still be provisioning the pipeline and may not yet have created the role. Check the progress of the provisioning in the CodeStar dashboard.
 {{% /notice %}}
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-019.png?featherlight=false&width=90pc)
-21. Click **Add permissions**
+22. Click **Add permissions**
 * Click **Attach Policies**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-020.png?featherlight=false&width=90pc)
-22. Type ```idevelop``` to the search bar and press **Enter**
+23. Type ```idevelop``` to the search bar and press **Enter**
 * Select **idevelopCodeStarCloudFormationPolicy**
 * Click **Attach Policies**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-021.png?featherlight=false&width=90pc)
 #### Update placeholder parameters in the CloudFormation template
-23. Trong Eclipse IDE, open the **template.yml** file
+24. Trong Eclipse IDE, open the **template.yml** file
 * Do the same step 68 and step 69 in the 3.3 section to get the **DatabaseSecurityGroup** value, the **DatabaseSubnet1** value, the **DatabaseSubnet2** value and the **RDSEndpoint** value
 * Replace **\<DatabaseSecurityGroup\>** with the **DatabaseSecurityGroup** value
 * Replace **\<DatabaseSubnet1\>** with the **DatabaseSubnet1** value
@@ -148,45 +141,45 @@ If you can’t find the role, it may be too early - CodeStar may still be provis
 #### Update the target AWS region in the swagger.yml API definition file
 The **swagger.yml** file provided in the zip bundle is the definition for the API that exposes the microservice via Amazon API Gateway. It needs to be updated with details of your lab AWS Account Id and target AWS Region before you can deploy your microservice.
 
-24. In the Eclipse IDE, open the **swagger.yml** file
+25. In the Eclipse IDE, open the **swagger.yml** file
 * Press **Ctrl+F** shortcut
 * In the **Find** section, type ```REPLACE_AWS_REGION```
 * In the **Replace with** section, type your **Region**
 * Click **Replace All** to replace
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-025.png?featherlight=false&width=90pc)
-25. In the **Find** section, type ```REPLACE_AWS_ACCOUNTID```
+26. In the **Find** section, type ```REPLACE_AWS_ACCOUNTID```
 * In the **Replace with** section, type your **AWS Account Id**
 * Click **Replace All** to replace
 * Save
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-025b.png?featherlight=false&width=90pc)
-26. Now that you have completed updating files, you need to add the changed files to your **new-implementation** git branch and commit the files.
+27. Now that you have completed updating files, you need to add the changed files to your **new-implementation** git branch and commit the files.
 * Open **Command Prompt**, execute the below command to navigate to the directory of the **FlightSpecialsAPI** folder and review the changed code files
 ```
 cd C:\Users\Administrator\git\FlightSpecialsAPI
 git status
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-026.png?featherlight=false&width=60pc)
-27. Execute the below command to add in the changed files
+28. Execute the below command to add in the changed files
 ```
 git add .
 git commit -m "Baseline implementation"
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-027.png?featherlight=false&width=60pc)
-28. Execute the below command to switch back to the **master** branch
+29. Execute the below command to switch back to the **master** branch
 ```
 git checkout master
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-028.png?featherlight=false&width=60pc)
-29. Execute the below command to merge the changes for your **new-implementation** branch into the **master** branch
+30. Execute the below command to merge the changes for your **new-implementation** branch into the **master** branch
 ```
 git merge new-implementation
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-029.png?featherlight=false&width=60pc)
-30. In the Eclipse IDE, right-click on the **FlightSpecialsAPI** project
+31. In the Eclipse IDE, right-click on the **FlightSpecialsAPI** project
 * Click **Team** 
 * Click **Push to origin**. 
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-030.png?featherlight=false&width=90pc)
-31. Click **Close**
+32. Click **Close**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-031.png?featherlight=false&width=90pc)
 
 You need to perform the push from Eclipse because the git credentials are embedded within the Eclipse environment. You could also configure the command line environment with the git credentials but that is beyond the scope of this lab.
@@ -211,16 +204,16 @@ The **template.yml** file uses the **Serverless Application Model (SAM)** transf
 
 #### Test the FlightSpecials API
 
-32. Go to [**AWS API Gateway console**](https://console.aws.amazon.com/apigateway/home)
+33. Go to [**AWS API Gateway console**](https://console.aws.amazon.com/apigateway/home)
 * Type **iDevelop - Flight Specials API** to the search bar and press **Enter**
 * Click **iDevelop - Flight Specials API**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-032.png?featherlight=false&width=90pc)
-33. Click **Stages**
+34. Click **Stages**
 * Expand the **prod** root element
 * Click **GET**
 * Click **Invoke URL**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-033.png?featherlight=false&width=90pc)
-34. After a moment while the Lambda function is initialised, you should see the JSON result of querying the mySQL database from the Lambda function
+35. After a moment while the Lambda function is initialised, you should see the JSON result of querying the mySQL database from the Lambda function
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-034.png?featherlight=false&width=90pc)
 
 If you see a JSON payload with no errors, you have successfully deployed an API and supporting Lambda function that queries the mySQL database. Notice how much quicker and easier that was to deploy without any manual intervention, and you didn’t even have to interact with the AWS CLI or Console? Everything was driven by the source control check-in process.

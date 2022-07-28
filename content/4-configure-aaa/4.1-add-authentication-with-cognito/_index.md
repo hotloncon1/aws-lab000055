@@ -7,7 +7,6 @@ pre = "<b>4.1. </b>"
 +++
 #### Add Authentication to the SPA using Amazon Cognito User Pools
 
-
 In this exercise, we will make use of the **Cognito User Pool** and **Identity Pool**, and mark one of our API endpoints as requiring authentication via **Cognito User Pools**.
 
 1. Go to [**AWS Cognito console**](https://console.aws.amazon.com/cognito/home).

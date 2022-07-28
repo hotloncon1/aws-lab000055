@@ -6,23 +6,7 @@ chapter = false
 pre = "<b>3.3. </b>"
 +++
 #### Tạo và Cung cấp API với Amazon API Gateway
-```
-set AWS_PROFILE=devaxacademy
-set DDB_TABLENAME_TRIPSECTOR=TravelBuddyTripSectors
-mvn test
-```
-```aws s3 cp target/tripsearch-1.0.0.jar s3:// --region us-east-1```
-aws lambda create-function --function-name idevelopTripSearchFromCity --runtime java8 --role arn:aws:iam::649966601103:role/LambdaRole --handler devlounge.lambda.FindTripsFromCityHandler --code S3Bucket=devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t,S3Key=tripsearch-1.0.0.jar --timeout 15 --description "TravelBuddy TripSearch microservice - FindTripsFromCity" --memory-size 1024 --region us-east-1
 
-aws lambda create-function --function-name idevelopFindTripsToCity --runtime java8 --role arn:aws:iam::649966601103:role/LambdaRole --handler devlounge.lambda.FindTripsToCityHandler --code S3Bucket=devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t,S3Key=tripsearch-1.0.0.jar --timeout 15 --description "TravelBuddy TripSearch microservice - FindTripsToCity" --memory-size 1024 --region us-east-1
-
-```
-set AWS_PROFILE=devaxacademy
-mvn package shade:shade
-```
-
-aws cloudformation package --template template.yml --s3-bucket devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t --output-template template-export.yml
-aws cloudformation package --template template.yml --s3-bucket devax-06-s3bucketlambdacode4dbb269b-ydaa2pngaf8t --output-template template-export.yml
 1. Truy cập [**AWS API Gateway console**](https://console.aws.amazon.com/apigateway/home).
 * Trong phần **Choose an API type**, tìm **REST API - Develop a REST API where you gain complete control over the request and response along with API management capabilities.**
 * Click **Build**
@@ -312,6 +296,7 @@ mvn package shade:shade
 * Thay **\<DatabaseSubnet1\>** bằng giá trị **DatabaseSubnet1** đã lưu trong bước 69
 * Thay **\<DatabaseSubnet2\>** bằng giá trị **DatabaseSubnet2** đã lưu trong bước 69
 * Thay **\<RDSEndpoint\>** bằng giá trị **RDSEndpoint** đã lưu trong bước 69
+* Lưu lại
 ![Create And Expose the API with Amazon API Gateway](/images/3-create-single-page-app/3.3-create-api-with-api-gateway/create-api-with-api-gateway-069.png?featherlight=false&width=90pc)
 72. Trong **Command Prompt**, chạy câu lệnh dưới đây để để đóng gói hàm Lambda (từ thành phần triển khai bạn đã tạo)
 ```

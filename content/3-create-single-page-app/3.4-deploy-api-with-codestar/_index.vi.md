@@ -7,43 +7,6 @@ pre = "<b>3.4. </b>"
 +++
 #### Tạo một CI/CD pipeline với AWS CodeStar
 
-```
-cd C:\Users\Administrator\git\FlightSpecialsAPI
-git checkout -b "new-implementation"
-cd C:\Users\Administrator\Downloads\FlightSpecials
-copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
-```
-git checkout "new-implementation"
-
-```
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot</artifactId>
-			<version>2.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>2.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-    		<groupId>org.json</groupId>
-    		<artifactId>json</artifactId>
-    		<version>20180130</version>
-		</dependency>
-		<dependency>
-			<groupId>com.amazonaws.serverless</groupId>
-			<artifactId>aws-serverless-java-container-core</artifactId>
-			<version>1.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.2.0</version>
-		</dependency>
-```
-
-
 1. Truy cập [**AWS CodeStar Console**](https://console.aws.amazon.com/codesuite/codestar/home).
 * Click **Projects**
 * Click **Create project**
@@ -119,8 +82,39 @@ copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
 * Click **Maven**
 * Click **Update Project...**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-018.png?featherlight=false&width=90pc)
+20. Trong Eclipse IDE, mở tập tin **pom.xml**
+* Thêm nội dung dưới đây vào sau dòng 13
+```
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<version>2.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>2.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.json</groupId>
+    		<artifactId>json</artifactId>
+    		<version>20180130</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws.serverless</groupId>
+			<artifactId>aws-serverless-java-container-core</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+```
+* Lưu lại
+
 #### Cấp quyền cho CloudFormation để tạo IAM role
-20. Truy cập vào [**AWS IAM Console**](https://console.aws.amazon.com/iamv2/).
+21. Truy cập vào [**AWS IAM Console**](https://console.aws.amazon.com/iamv2/).
 * Click **Roles**.
 * Nhập ```CodeStarWorker-flightspecialsa-CloudFormation``` vào ô tìm kiếm và nhấn **Enter**
 * Click **CodeStarWorker-flightspecialsa-CloudFormation**. 
@@ -128,15 +122,15 @@ copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
 Nếu bạn không thể tìm thấy role, có thể do còn quá sớm - CodeStar vẫn đang trong quy trình cấp phát và có thể chưa tạo role. Kiểm tra tiến trình cung cấp trong CodeStar dashboard.
 {{% /notice %}}
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-019.png?featherlight=false&width=90pc)
-21. Click **Add permissions**
+22. Click **Add permissions**
 * Click **Attach Policies**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-020.png?featherlight=false&width=90pc)
-22. Nhập ```idevelop``` vào ô tìm kiếm và nhấn **Enter**
+23. Nhập ```idevelop``` vào ô tìm kiếm và nhấn **Enter**
 * Chọn **idevelopCodeStarCloudFormationPolicy**
 * Click **Attach Policies**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-021.png?featherlight=false&width=90pc)
 #### Cập nhật các thông số trong CloudFormation template
-23. Trong Eclipse IDE, mở tập tin **template.yml**
+24. Trong Eclipse IDE, mở tập tin **template.yml**
 * Làm tương tự bước 68 và bước 69 trong phần 3.3 để lấy giá trị **DatabaseSecurityGroup**, **DatabaseSubnet1**, **DatabaseSubnet2** và **RDSEndpoint**
 * Thay **\<DatabaseSecurityGroup\>** bằng giá trị **DatabaseSecurityGroup**
 * Thay **\<DatabaseSubnet1\>** bằng giá trị **DatabaseSubnet1**
@@ -147,45 +141,45 @@ Nếu bạn không thể tìm thấy role, có thể do còn quá sớm - CodeSt
 #### Cập nhật AWS region trong tập tin định nghĩa API swagger.yml 
 Tập tin **swagger.yml** được cung cấp trong gói zip là định nghĩa cho API sẽ cung cấp microservice thông qua Amazon API Gateway. Nó cần được cập nhật thông tin chi tiết về AWS Account ID trong bài thực hành của bạn và Region AWS mục tiêu trước khi bạn có thể triển khai dịch vụ vi mô của mình.
 
-24. Trong Eclipse IDE, mở tập tin **swagger.yml**
+25. Trong Eclipse IDE, mở tập tin **swagger.yml**
 * Nhấn tổ hợp phím **Ctrl+F**
 * Tại mục **Find**, điền ```REPLACE_AWS_REGION```
 * Tại mục **Replace with**, điền **Region** bạn đang làm bài thực hành này
 * Click **Replace All** để thay thế
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-025.png?featherlight=false&width=90pc)
-25. Tại mục **Find**, điền ```REPLACE_AWS_ACCOUNTID```
+26. Tại mục **Find**, điền ```REPLACE_AWS_ACCOUNTID```
 * Tại mục **Replace with**, điền **AWS Account Id** của bạn
 * Click **Replace All** để thay thế
 * Lưu lại
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-025b.png?featherlight=false&width=90pc)
-26. Bây giờ bạn đã hoàn tất cập nhật tập tin, bạn cần thêm các tập tin đã thay đổi vào **new-implementation** git branch và xác nhận các thay đổi.
+27. Bây giờ bạn đã hoàn tất cập nhật tập tin, bạn cần thêm các tập tin đã thay đổi vào **new-implementation** git branch và xác nhận các thay đổi.
 * Mở **Command Prompt**, chạy câu lệnh dưới đây để chuyển đường dẫn tới thư mục project **FlightSpecialsAPI** và xem lại thay đổi chưa được commit
 ```
 cd C:\Users\Administrator\git\FlightSpecialsAPI
 git status
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-026.png?featherlight=false&width=60pc)
-27. Chạy lệnh dưới đây để thêm những tập tin thay đổi
+28. Chạy lệnh dưới đây để thêm những tập tin thay đổi
 ```
 git add .
 git commit -m "Baseline implementation"
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-027.png?featherlight=false&width=60pc)
-28. Chạy lệnh dưới đây để chuyển về nhánh **master**
+29. Chạy lệnh dưới đây để chuyển về nhánh **master**
 ```
 git checkout master
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-028.png?featherlight=false&width=60pc)
-29. Chạy lệnh dưới đây để để merge thay đổi từ nhánh **new-implementation** vào nhánh **master**
+30. Chạy lệnh dưới đây để để merge thay đổi từ nhánh **new-implementation** vào nhánh **master**
 ```
 git merge new-implementation
 ```
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-029.png?featherlight=false&width=60pc)
-30. Trong Eclipse IDE, nhấp chuột phải vào project **FlightSpecialsAPI** 
+31. Trong Eclipse IDE, nhấp chuột phải vào project **FlightSpecialsAPI** 
 * Click **Team** 
 * Click **Push to origin**. 
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-030.png?featherlight=false&width=90pc)
-31. Click **Close**
+32. Click **Close**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-031.png?featherlight=false&width=90pc)
 
 Bạn cần thực hiện đẩy từ Eclipse vì thông tin xác thực git được nhúng trong môi trường Eclipse. Bạn cũng có thể định cấu hình môi trường dòng lệnh bằng thông tin đăng nhập git nhưng điều đó nằm ngoài phạm vi của phòng thí nghiệm này.
@@ -210,16 +204,16 @@ Tập tin **template.yml** sử dụng **Serverless Application Model (SAM)** ch
 
 #### Kiểm thử API FlightSpecials
 
-32. Truy cập [**AWS API Gateway console**](https://console.aws.amazon.com/apigateway/home)
+33. Truy cập [**AWS API Gateway console**](https://console.aws.amazon.com/apigateway/home)
 * Nhập **iDevelop - Flight Specials API** vào ô tìm kiếm và nhấn **Enter**
 * Click **iDevelop - Flight Specials API**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-032.png?featherlight=false&width=90pc)
-33. Click **Stages**
+34. Click **Stages**
 * Click dấu mũi tên bên cạnh **prod**
 * Click **GET**
 * Click **Invoke URL**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-033.png?featherlight=false&width=90pc)
-34. Sau một lúc khi hàm Lambda được khởi tạo, bạn sẽ thấy kết quả JSON của việc truy vấn cơ sở dữ liệu MySQL từ hàm Lambda
+35. Sau một lúc khi hàm Lambda được khởi tạo, bạn sẽ thấy kết quả JSON của việc truy vấn cơ sở dữ liệu MySQL từ hàm Lambda
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-034.png?featherlight=false&width=90pc)
 
 Nếu bạn thấy một JSON payload không có lỗi, bạn đã triển khai thành công một API và hỗ trợ hàm Lambda truy vấn cơ sở dữ liệu MySQL. Lưu ý rằng việc triển khai nhanh hơn và dễ dàng hơn mà không cần bất kỳ sự can thiệp thủ công nào và bạn thậm chí không phải tương tác với AWS CLI hoặc Bảng điều khiển? Mọi thứ được thúc đẩy bởi quá trình đăng ký kiểm soát nguồn.

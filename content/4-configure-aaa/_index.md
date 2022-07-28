@@ -8,7 +8,7 @@ pre = "<b>4. </b>"
 
 #### Overview
 
-In this section, we will follow the same process we followed in the previous Labs to provision a CI/CD pipeline to manage the automated deployment of our new Trip Search microservice.
+Right now, our TravelBuddy SPA does not require any authentication in order to call the API services we have exposed. The lab setup process has provisioned a Cognito User Pool and a Cognito Identity Pool in your account. The Cognito User Pool is your fully-managed system of record for users in your application. The Identity Pool is used to obtain temporary AWS IAM credentials to sign requests that require SigV4 signing. The Cognito Identity Pool federates between multiple Identity Providers, but in our lab example, we only have one Identity Provider (the User Pool). Our TravelBuddy SPA does not actually have the requirement for IAM credentials, but we have implemented the feature to demonstrate how you can accomplish this. As a Challenge Exercise, we will ask you to implement AWS IAM Authorisation for a call into API Gateway, but this is an optional task for the lab.
 
 
 #### Content:

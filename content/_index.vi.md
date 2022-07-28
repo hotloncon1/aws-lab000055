@@ -1,10 +1,10 @@
 +++
-title = "Cơ cấu lại dữ liệu và quy trình làm việc của bạn"
+title = "Tạo một Ứng dụng Đơn trang (SPA) được xác thực"
 date = 2021
 weight = 1
 chapter = false
 +++
-# Cơ cấu lại dữ liệu và quy trình làm việc của bạn
+# Tạo một Ứng dụng Đơn trang (SPA) được xác thực
 
 #### Tổng quan
 

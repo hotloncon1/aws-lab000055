@@ -6,9 +6,6 @@ chapter = false
 pre = "<b>3.6. </b>"
 +++
 #### Tạo một Client để sử dụng API
-```
-java -jar target/TripSearch-sdkClient-1.0-SNAPSHOT.jar
-```
 
 Bây giờ bạn có một mô hình hoạt động của trang web đang chạy như một SPA gọi dữ liệu thông qua RESTful API được lưu trữ trên AWS Lambda và cung cấp từ Amazon API Gateway. Các nguồn cấp dữ liệu này được coi là công khai vì người dùng không cần đăng nhập và cung cấp thông tin đăng nhập cho lệnh gọi tới API. Trong bài tập này, bạn sẽ xem xét cách bạn có thể yêu cầu xác thực để thực hiện lệnh gọi API và việc sử dụng Khóa API để thực thi điều chỉnh tốc độ cuộc gọi và quản lý hạn ngạch. Để chứng minh, bạn sẽ sử dụng một ứng dụng Java client, để chỉ ra cách bạn có thể sử dụng các Java SDK được tạo tự động trong các ứng dụng của bạn.
 
@@ -239,7 +236,8 @@ mvn install
 Việc này sẽ biên dịch và cài đặt SDK trong kho lưu trữ Maven cục bộ của bạn và ghi đè lên phiên bản trước. 
 
 #### Kiểm thử SDK vừa tạo mới với Ứng dụng Client Java
-28. Chạy câu lệnh dưới đây để chạy ứng dụng
+28. Trong **Command Prompt**, chuyển đường dẫn đến mã nguồn giải nén trong bước 10
+* Chạy câu lệnh dưới đây để chạy ứng dụng
 ```
 java -jar target/TripSearch-sdkClient-1.0-SNAPSHOT.jar
 ```

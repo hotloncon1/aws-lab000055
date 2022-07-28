@@ -1,10 +1,10 @@
 +++
-title = "Refactor Your Data & Workflows"
+title = "Creating an Authenticated Single Page Application (SPA) "
 date = 2021
 weight = 1
 chapter = false
 +++
-# Refactor Your Data & Workflows
+# Creating an Authenticated Single Page Application (SPA) 
 
 #### Oveview
 

@@ -5,10 +5,6 @@ weight = 1
 chapter = false
 pre = "<b>4.1. </b>"
 +++
-www\scripts\webapp-configuration.js
-```
-set AWS_PROFILE=devaxacademy
-```
 #### Thêm Xác thực vào SPA sử dụng Amazon Cognito User Pools
 
 Trong phần này, chúng ta sẽ sử dụng **Cognito User Pool** và **Identity Pool**, đồng thời đánh dấu một trong các điểm cuối API của chúng tôi là yêu cầu xác thực qua Cognito User Pools.
