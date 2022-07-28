@@ -83,7 +83,7 @@ copy_files.sh C:\Users\Administrator\git\FlightSpecialsAPI
 * Click **Update Project...**
 ![Deploy the api using code star and CI/CD](/images/3-create-single-page-app/3.4-deploy-api-with-codestar/deploy-api-with-codestar-018.png?featherlight=false&width=90pc)
 20. Trong Eclipse IDE, mở tập tin **pom.xml**
-* Thêm nội dung dưới đây vào sau dòng 13
+* Thêm nội dung dưới đây vào sau dòng 113
 ```
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
